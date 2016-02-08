@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var coffees=require('./routes/coffees');
 
 var app = express();
 
@@ -24,11 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.get('/coffees',coffee.getAll);
-app.get('/coffees/:id',coffee.getSingleCoffee);
-app.post('/coffees',coffee.addCoffee);
-app.put('coffees/:id',coffee.updateCoffee);
-app.delete('coffees/:id',coffee.deleteCoffee);
+app.get('/coffees',coffees.getAll);
+app.get('/coffees/:id',coffees.getSingleCoffee);
+app.post('/coffees',coffees.addCoffee);
+app.put('/coffees/:id',coffees.updateCoffee);
+app.delete('/coffees/:id',coffees.deleteCoffee);
 
 
 // catch 404 and forward to error handler

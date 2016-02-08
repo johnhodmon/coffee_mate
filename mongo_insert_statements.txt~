@@ -1,0 +1,3 @@
+db.coffees.insert({"name":"LavaZZa Creme e gusto","coffee shop":"Costa Waterford","price":2.25,"stars":5,"favourite":"yes"});
+db.coffees.insert({"name":"Bewleys French Blend","coffee shop":"Centra Shop WIT","price":2.00,"stars":4,"favourite":"yes"});
+db.coffees.insert({"name":"illy americano","coffee shop":"O'Brien's Wexford","price":2.35,"stars":3,"favourite":"no"});
