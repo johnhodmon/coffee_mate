@@ -10,10 +10,19 @@ a {
 .favourite-star
 {
   color:blue;
+
 }
 
 .non-favourite-star
 {
   color:black;
+
 }
+
+.big-star
+{
+  font-size: 50px;
+}
+
+
 
