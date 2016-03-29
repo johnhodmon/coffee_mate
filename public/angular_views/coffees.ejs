@@ -8,8 +8,8 @@
             <tbody ng-repeat="coffee in coffees | orderBy:'-stars'">
             <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
             <td>
-                <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementStars(coffee._id)"></span>
-                {{coffee.stars}}
+               <button ng-click="incrementStars(coffee._id)"> <span class={{coffee.favourite}}></span>
+                {{coffee.stars}}</button>
             </td>
             <td>
                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.name}}</span>
