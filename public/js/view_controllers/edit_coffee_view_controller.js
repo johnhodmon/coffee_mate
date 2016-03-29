@@ -18,12 +18,46 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
                 $scope.edit_coffee_form.price=coffee.price;
                 $scope.edit_coffee_form.stars=coffee.stars;
                 $scope.edit_coffee_form.favourite=coffee.favourite;
+                setStarDisplay();
+
 
             })
             .error(function (data) {
                 console.log('Error' + data)
             });
     }
+
+
+
+function setStarDisplay() {
+    if ($scope.edit_coffee_form.stars == 5) {
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = $scope.star5_style = "glyphicon glyphicon-star favourite-star"
+    }
+
+    else if ($scope.edit_coffee_form.stars == 4) {
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = "glyphicon glyphicon-star favourite-star"
+        $scope.star5_style = "glyphicon glyphicon-star-empty"
+    }
+
+    else if ($scope.edit_coffee_form.stars == 3) {
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = "glyphicon glyphicon-star favourite-star";
+        $scope.star5_style = $scope.star4_style = "glyphicon glyphicon-star-empty"
+    }
+
+    else if ($scope.edit_coffee_form.stars == 2) {
+        $scope.star1_style = $scope.star2_style = "glyphicon glyphicon-star favourite-star";
+        $scope.star5_style = $scope.star4_style = $scope.star3_style = "glyphicon glyphicon-star-empty"
+    }
+
+    else if ($scope.edit_coffee_form.stars == 1) {
+        $scope.star1_style = "glyphicon glyphicon-star favourite-star";
+        $scope.star5_style = $scope.star4_style = $scope.star3_style = $scope.star2_style = "glyphicon glyphicon-star-empty"
+    }
+
+    else {
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = $scope.star5_style = "glyphicon glyphicon-star-empty"
+    }
+}
 
 $scope.toggleFavourite=function()
 {
@@ -37,6 +71,12 @@ $scope.toggleFavourite=function()
     {
         $scope.edit_coffee_form.favourite="glyphicon glyphicon-star favourite-star";
     }
+}
+
+$scope.setStars=function(numberOfStars)
+{
+    $scope.edit_coffee_form.stars=numberOfStars;
+    setStarDisplay()
 }
 
 
