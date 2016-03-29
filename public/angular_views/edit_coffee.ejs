@@ -11,6 +11,9 @@
                       style="margin-top:30px;">
                     <h3>Edit Coffee</h3>
                     <div class="form-group" align="center">
+                        <span ng-click="toggleFavourite()" class={{edit_coffee_form.favourite}}></span>
+                    </div>
+                    <div class="form-group" align="center">
                         <input type="text"
                                class="form-control"
                                placeholder={{edit_coffee_form.name}}
@@ -44,14 +47,7 @@
                                ng-style="{'width': 100 + 'px'}" />
                     </div>
 
-                    <div class="form-group" align="center">
-                        <input type="text"
 
-                               class="form-control"
-                               placeholder={{edit_coffee_form.favourite}}
-                               ng-model="edit_coffee_form.favourite"
-                               ng-style="{'width': 100 + 'px'}" />
-                    </div>
                     <button type="submit" class="btn btn-primary">Save Coffee</button>
                 </form>
 

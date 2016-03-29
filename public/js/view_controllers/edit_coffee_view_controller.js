@@ -4,14 +4,14 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
 
     $scope.edit_coffee_form = {};
     getCoffeeToEdit();
-
+    var coffee={};
 
 
     function getCoffeeToEdit() {
         $http.get('/coffees/'+$routeParams.id)
             .success(function (data) {
                 console.log("data: " + data);
-                var coffee = data[0];
+                coffee = data[0];
 
                 $scope.edit_coffee_form.name=coffee.name;
                 $scope.edit_coffee_form.coffee_shop=coffee.coffee_shop;
@@ -25,7 +25,19 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
             });
     }
 
+$scope.toggleFavourite=function()
+{
+   console.log("toggle");
+    if ($scope.edit_coffee_form.favourite=="glyphicon glyphicon-star favourite-star")
+    {
+        $scope.edit_coffee_form.favourite="glyphicon glyphicon-star-empty";
+    }
 
+    else
+    {
+        $scope.edit_coffee_form.favourite="glyphicon glyphicon-star favourite-star";
+    }
+}
 
 
     $scope.editCoffee=function(coffee)
