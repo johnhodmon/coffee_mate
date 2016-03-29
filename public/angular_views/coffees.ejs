@@ -1,0 +1,41 @@
+<div class="jumbotron text-center">
+    <h1>List All Donations</h1>
+
+    <p>{{ message }}</p>
+
+    <div ng-controller="coffees_view_controller as list">
+        <table align="center" valign="middle">
+            <tbody ng-repeat="coffee in coffees | orderBy:'-stars'">
+            <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
+            <td>
+                <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementStars(coffee._id)"></span>
+                {{coffee.stars}}
+            </td>
+            <td>
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.name}}</span>
+            </td>
+            <td>
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.coffee_shop}}</span>
+            </td>
+            <td>
+                <span class="glyphicon glyphicon-euro"></span>
+                {{coffee.price}}
+            </td>
+            <td>
+
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>
+
+
+                <button type="button" class="btn btn-default" ng-click="delete(coffee._id)">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                </button>
+                <button type="button" class="btn btn-default" ng-click="update(donation)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+                </span>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

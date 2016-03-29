@@ -49,6 +49,34 @@ router.getSingleCoffee=(function(req,res)
     });
 });
 
+router.incrementStars = function(req, res)
+{
+    Coffee.findById(req.params.id,function(err,coffee){
+        if(err)
+        {
+            res.send(err)
+        }
+
+        else
+        {
+            coffee.stars+=1;
+
+            coffee.save(function(err){
+                if(err)
+                {
+                    res.send(err);
+                }
+
+                else
+                {
+                    res.json({message:'Coffee Updated',data:coffee});
+                }
+
+            });
+        }
+    })
+};
+
 router.updateCoffee=(function(req,res)
 {
     Coffee.findById(req.params.id,function(err,coffee){
