@@ -36,7 +36,7 @@ app.controller('coffees_view_controller', ['$scope', '$http','$location', functi
                 })
 
         }
-    }
+    };
 
     $scope.incrementStars=function(id) {
 
@@ -46,7 +46,7 @@ app.controller('coffees_view_controller', ['$scope', '$http','$location', functi
         $http.put('/coffees/'+id+'/stars').success(function (data) {
 
 
-                console.log(data)
+                console.log(data);
                 findAll();
             })
             .error(function (data) {
@@ -55,7 +55,13 @@ app.controller('coffees_view_controller', ['$scope', '$http','$location', functi
 
     }
 
+    $scope.update=function(id) {
+
+        $location.path('coffees/'+id+'/edit');
+    }
+
 }
+
 
 
 

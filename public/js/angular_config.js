@@ -19,6 +19,11 @@ app.config(function($routeProvider) {
             controller  : 'add_coffee_view_controller'
         })
 
+        .when('/coffees/:id/edit', {
+            templateUrl : 'angular_views/edit_coffee.ejs',
+            controller  : 'edit_coffee_view_controller'
+        })
+
 
 
 

@@ -88,6 +88,9 @@ router.updateCoffee=(function(req,res)
 
         else
         {
+            coffee.name=req.body.name;
+            coffee.coffee_shop=req.body.coffee_shop;
+            coffee.price=req.body.price;
             coffee.stars=req.body.stars;
             coffee.favourite=req.body.favourite;
             coffee.save(function(err){

@@ -28,6 +28,7 @@ app.get('/coffees',coffees.getAll);
 app.get('/coffees/:id',coffees.getSingleCoffee);
 app.post('/coffees',coffees.addCoffee);
 app.put('/coffees/:id/stars',coffees.incrementStars);
+app.put('/coffees/:id',coffees.updateCoffee);
 app.delete('/coffees/:id',coffees.deleteCoffee);
 
 
