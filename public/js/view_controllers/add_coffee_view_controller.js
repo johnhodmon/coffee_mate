@@ -26,7 +26,7 @@ app.controller('add_coffee_view_controller', ['$scope', '$location','$http', fun
         $http.post('/coffees',coffee)
             .success(function(data){
                 console.log(data);
-                $location.path('/coffees');
+                $location.path('/my_coffees');
             })
             .error(function(data)
             {

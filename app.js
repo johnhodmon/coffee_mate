@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.get('/coffees',coffees.getAll);
+app.get('/favourites/:email',coffees.findUserFavourites);
 app.get('/coffees/:email',coffees.findUserCoffee);
 app.get('/coffees/:id',coffees.getSingleCoffee);
 app.post('/coffees',coffees.addCoffee);

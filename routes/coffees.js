@@ -54,6 +54,26 @@ router.findUserCoffee=(function(req, res)
     });
 })
 
+router.findUserFavourites=(function(req, res)
+
+{
+    var email=req.params.email;
+
+    Coffee.find({ 'user_email': email,'favourite':'glyphicon glyphicon-star favourite-star' },function(err, coffees)
+    {
+        if(err)
+        {
+            res.send(err);
+        }
+
+        else
+        {
+            res.json(coffees);
+        }
+
+    });
+})
+
 router.getSingleCoffee=(function(req,res)
 {
 

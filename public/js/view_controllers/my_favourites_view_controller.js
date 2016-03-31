@@ -6,14 +6,14 @@ app.controller('my_favourites_view_controller', ['$scope', '$http','$location', 
 
 
 
-    findAll();
+    findMyFavourites();
 
 
 
 
-    function findAll()
+    function findMyFavourites()
     {
-        $http.get('/coffees')
+        $http.get('/favourites/'+$scope.profile.email)
             .success(function(data)
             {
                 $scope.coffees=data;
@@ -34,7 +34,7 @@ app.controller('my_favourites_view_controller', ['$scope', '$http','$location', 
 
 
                     console.log(data)
-                    findAll();
+                    findMyFavourites();
                 })
                 .error(function (data) {
                     console.log('error: ' + data);
@@ -52,7 +52,7 @@ app.controller('my_favourites_view_controller', ['$scope', '$http','$location', 
 
 
                 console.log(data);
-                findAll();
+                findMyFavourites();
             })
             .error(function (data) {
                 console.log('error: ' + data);
