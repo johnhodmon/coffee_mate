@@ -14,6 +14,16 @@ app.config(function($routeProvider) {
             controller  : 'coffees_view_controller'
         })
 
+        .when('/my_coffees', {
+            templateUrl : 'angular_views/my_coffees.ejs',
+            controller  : 'my_coffees_view_controller'
+        })
+
+        .when('/my_favourites', {
+            templateUrl : 'angular_views/my_favourites.ejs',
+            controller  : 'my_favourites_view_controller'
+        })
+
         .when('/coffees/new', {
             templateUrl : 'angular_views/add_coffee.ejs',
             controller  : 'add_coffee_view_controller'

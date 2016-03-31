@@ -8,10 +8,14 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
 
 
     function getCoffeeToEdit() {
-        $http.get('/coffees/'+$routeParams.id)
+        console.log("_id: " +$routeParams.id);
+        $http.get('/coffees/')
+
             .success(function (data) {
                 console.log("data: " + data);
                 coffee = data[0];
+                console.log("name: " + coffee.name);
+
 
                 $scope.edit_coffee_form.name=coffee.name;
                 $scope.edit_coffee_form.coffee_shop=coffee.coffee_shop;
@@ -99,7 +103,7 @@ $scope.setStars=function(numberOfStars)
         $http.put('/coffees/'+$routeParams.id,updatedCoffee)
             .success(function(data){
                 console.log(data);
-                $location.path('/coffees');
+                $location.path('/my_coffees');
             })
             .error(function(data)
             {

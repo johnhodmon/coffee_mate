@@ -1,16 +1,20 @@
 <div class="jumbotron text-center">
-    <h1>List All Donations</h1>
+    <h1>All Coffees</h1>
 
-    <p>{{ message }}</p>
+    <p ng-show="!signedIn">Please <a href="#coffees" ng-click="signIn()">Sign In</a> </p>
 
-    <div ng-controller="coffees_view_controller as list">
+    <div ng-show="signedIn" ng-controller="coffees_view_controller as list">
         <table align="center" valign="middle">
             <tbody ng-repeat="coffee in coffees | orderBy:'-stars'">
             <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
             <td>
-               <button ng-click="incrementStars(coffee._id)"> <span class={{coffee.favourite}}></span>
-                {{coffee.stars}}</button>
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";><img class="img-circle img_coffee_list img-responsive" src="{{coffee.user_img_url}}"/></span>
             </td>
+
+            <td>
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.user_name}}</span>
+            </td>
+
             <td>
                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.name}}</span>
             </td>
@@ -21,21 +25,8 @@
                 <span class="glyphicon glyphicon-euro"></span>
                 {{coffee.price}}
             </td>
-            <td>
 
-                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>
-
-
-                <button type="button" class="btn btn-default" ng-click="delete(coffee._id)">
-                    <span class="glyphicon glyphicon-remove"></span> Remove
-                </button>
-                <button type="button" class="btn btn-default" ng-click="update(coffee._id)">
-                    <span class="glyphicon glyphicon-edit"></span> Edit
-                </button>
-                </span>
-            </td>
             </tr>
             </tbody>
         </table>
     </div>
-</div>

@@ -34,9 +34,13 @@ router.getAll=( function(req,res){
 
 });
 
-router.getSingleCoffee=(function(req,res)
+router.findUserCoffee=(function(req, res)
+
 {
-    Coffee.find({"_id":req.params.id},function(err, coffee){
+    var email=req.params.email;
+
+    Coffee.find({ 'user_email': email },function(err, coffees)
+    {
         if(err)
         {
             res.send(err);
@@ -44,6 +48,25 @@ router.getSingleCoffee=(function(req,res)
 
         else
         {
+            res.json(coffees);
+        }
+
+    });
+})
+
+router.getSingleCoffee=(function(req,res)
+{
+
+
+    Coffee.findById({"_id":req.params.id},function(err, coffee){
+        if(err)
+        {
+            res.send(err);
+        }
+
+        else
+        {
+            console.log("getting the coffee");
             res.json(coffee);
         }
     });
@@ -116,6 +139,10 @@ router.addCoffee=(function(req,res)
     coffee.name=req.body.name;
     coffee.coffee_shop=req.body.coffee_shop;
     coffee.price=req.body.price;
+    coffee.user_name=req.body.user_name;
+    coffee.user_email=req.body.user_email;
+    coffee.user_img_url=req.body.user_img_url;
+
 
     coffee.save(function(err)
     {

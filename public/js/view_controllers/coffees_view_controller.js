@@ -2,9 +2,14 @@ var app = angular.module('CoffeeMate');
 
 app.controller('coffees_view_controller', ['$scope', '$http','$location', function($scope,$http,$location) {
     // create a message to display in our view
-    $scope.message = 'Coffees Page!';
 
-    findAll();
+
+
+
+        findAll();
+
+
+
 
     function findAll()
     {
@@ -12,7 +17,7 @@ app.controller('coffees_view_controller', ['$scope', '$http','$location', functi
             .success(function(data)
             {
                 $scope.coffees=data;
-                console.log(data);
+                console.log(data[0]);
             })
             .error(function(data)
             {
@@ -20,45 +25,7 @@ app.controller('coffees_view_controller', ['$scope', '$http','$location', functi
             })
     }
 
-    $scope.delete=function(id) {
 
-        if (confirm("Are you sure you want to delete this coffee?")) {
-
-
-            $http.delete('coffees/' + id).success(function (data) {
-
-
-                    console.log(data)
-                    findAll();
-                })
-                .error(function (data) {
-                    console.log('error: ' + data);
-                })
-
-        }
-    };
-
-    $scope.incrementStars=function(id) {
-
-
-
-
-        $http.put('/coffees/'+id+'/stars').success(function (data) {
-
-
-                console.log(data);
-                findAll();
-            })
-            .error(function (data) {
-                console.log('error: ' + data);
-            })
-
-    }
-
-    $scope.update=function(id) {
-
-        $location.path('coffees/'+id+'/edit');
-    }
 
 }
 

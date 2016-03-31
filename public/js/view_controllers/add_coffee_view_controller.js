@@ -9,11 +9,16 @@ app.controller('add_coffee_view_controller', ['$scope', '$location','$http', fun
 
     $scope.addCoffee=function()
     {
+        console.log("name: "+$scope.profile.name)
         var coffee=
         {
             'name': $scope.coffee_form.name,
             'coffee_shop': $scope.coffee_form.coffee_shop,
-            'price': $scope.coffee_form.price
+            'price': $scope.coffee_form.price,
+            'user_email':$scope.profile.email,
+            'user_name':$scope.profile.name,
+            'user_img_url':$scope.profile.imageUrl
+
 
 
         };

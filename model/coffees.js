@@ -8,7 +8,10 @@ var CoffeeSchema=new mongoose.Schema({
     coffee_shop:String,
     price:Number,
     stars:{type:Number, default:0},
-    favourite:{type:String, default:"glyphicon glyphicon-star-empty"}
+    favourite:{type:String, default:"glyphicon glyphicon-star-empty"},
+    user_email:String,
+    user_name:String,
+    user_img_url:String
 });
 
 module.exports=mongoose.model('Coffee',CoffeeSchema);
