@@ -13,7 +13,7 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
 //var mongodbUri = "mongodb://ds011830.mlab.com:11830/heroku_q98wzmtc"
 //var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 mongoose.connect('mongodb://localhost:27017/coffee_mate');
-mongoose.connect(mongooseUri,options);
+///mongoose.connect(mongooseUri,options);
 db.on('error',function(err){
     console.log('connection error', err);
 });
