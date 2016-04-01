@@ -8,7 +8,7 @@
             <tbody  ng-repeat="coffee in coffees | orderBy:'-stars'">
             <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
             <td>
-            <span  ng-click="editCoffee(coffee)" class="{{coffee.favourite}} big-star"></span>
+            <span ng-repeat="favouriteStyle in getFavouriteStyle(coffee._id)"  ng-click="makeFavourite(coffee)" class="{{favouriteStyle}} big-star"></span>
             </td>
             <td>
                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";><img class="img-circle img_coffee_list img-responsive" src="{{coffee.user_img_url}}"/></span>

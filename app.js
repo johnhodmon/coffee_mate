@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var coffees=require('./routes/coffees');
+var favourites=require('./routes/favourites');
 
 var app = express();
 
@@ -24,13 +25,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.get('/coffees',coffees.getAll);
-app.get('/my_favourites/:email',coffees.findUserFavourites);
+app.get('/favourites',favourites.getAll);
+app.get('/favourites/:email',favourites.findUserFavourites);
+app.get('/favourites/:email/:coffee_id',favourites.findCoffeeInUserFavourites);
 app.get('/my_coffees/:email',coffees.findUserCoffee);
 app.get('/coffees/:id',coffees.getSingleCoffee);
 app.post('/coffees',coffees.addCoffee);
+app.post('/favourites',favourites.addFavourite);
 app.put('/coffees/:id/stars',coffees.incrementStars);
 app.put('/coffees/:id',coffees.updateCoffee);
 app.delete('/coffees/:id',coffees.deleteCoffee);
+app.delete('/favourites/:id',favourites.deleteFavourite);
 
 
 // catch 404 and forward to error handler

@@ -94,10 +94,10 @@ app.controller('my_favourites_view_controller', ['$scope', '$http','$location', 
 
     function findMyFavourites()
     {
-        $http.get('/my_favourites/'+$scope.profile.email)
+        $http.get('/favourites/'+$scope.profile.email)
             .success(function(data)
             {
-                $scope.coffees=data;
+                $scope.favourites=data;
                 console.log(data);
             })
             .error(function(data)
@@ -106,45 +106,9 @@ app.controller('my_favourites_view_controller', ['$scope', '$http','$location', 
             })
     }
 
-    $scope.delete=function(id) {
-
-        if (confirm("Are you sure you want to delete this coffee?")) {
-
-
-            $http.delete('coffees/' + id).success(function (data) {
-
-
-                    console.log(data)
-                    findMyFavourites();
-                })
-                .error(function (data) {
-                    console.log('error: ' + data);
-                })
-
-        }
-    };
-
-    $scope.incrementStars=function(id) {
 
 
 
-
-        $http.put('/coffees/'+id+'/stars').success(function (data) {
-
-
-                console.log(data);
-                findMyFavourites();
-            })
-            .error(function (data) {
-                console.log('error: ' + data);
-            })
-
-    }
-
-    $scope.update=function(id) {
-
-        $location.path('coffees/'+id+'/edit');
-    }
 
 }
 

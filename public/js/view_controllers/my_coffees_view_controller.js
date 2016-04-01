@@ -7,7 +7,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
 
 
     findMyCoffees();
-
+    $scope.favourites=[];
 
 
 
@@ -18,6 +18,19 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
             {
                 $scope.coffees=data;
                 console.log(data);
+            })
+            .error(function(data)
+            {
+                console.log("error:"+data);
+            })
+
+        $http.get('/favourites/'+$scope.profile.email) .success(function(data)
+            {
+                $scope.favourites=data;
+
+
+
+
             })
             .error(function(data)
             {
@@ -38,6 +51,31 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
                 .error(function (data) {
                     console.log('error: ' + data);
                 })
+
+            var containedInFavourites=false;
+            var favouriteId=null;
+            for(var i=0;i<$scope.favourites.length;i++)
+            {
+                if($scope.favourites[i].coffee._id==id)
+                {
+                    containedInFavourites=true;
+                    favouriteId=$scope.favourites[i]._id
+                    break;
+                }
+            }
+
+            if (containedInFavourites)
+
+            {
+                $http.delete('favourites/' + favouriteId).success(function (data) {
+
+
+
+                    })
+                    .error(function (data) {
+                        console.log('error: ' + data);
+                    })
+            }
 
         }
     };
