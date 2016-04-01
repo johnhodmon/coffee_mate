@@ -13,6 +13,12 @@ a {
 
 }
 
+.gold-star
+{
+  color:yellow;
+
+}
+
 .non-favourite-star
 {
   color:black;
@@ -21,7 +27,7 @@ a {
 
 .big-star
 {
-  font-size: 50px;
+  font-size: 30px;
 }
 
 .g-signin2

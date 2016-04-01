@@ -5,8 +5,11 @@
 
     <div ng-show="signedIn" ng-controller="coffees_view_controller as list">
         <table align="center" valign="middle">
-            <tbody ng-repeat="coffee in coffees | orderBy:'-stars'">
+            <tbody  ng-repeat="coffee in coffees | orderBy:'-stars'">
             <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
+            <td>
+            <span  ng-click="editCoffee(coffee)" class="{{coffee.favourite}} big-star"></span>
+            </td>
             <td>
                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";><img class="img-circle img_coffee_list img-responsive" src="{{coffee.user_img_url}}"/></span>
             </td>
@@ -24,6 +27,12 @@
             <td>
                 <span class="glyphicon glyphicon-euro"></span>
                 {{coffee.price}}
+            </td>
+
+            <td >
+                <span ng-repeat="starStyle in getStarStyles(coffee.stars) track by $index" class="{{starStyle}}"></span>
+
+
             </td>
 
             </tr>

@@ -21,12 +21,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', routes);
 app.use('/users', users);
 app.get('/coffees',coffees.getAll);
-app.get('/favourites/:email',coffees.findUserFavourites);
-app.get('/coffees/:email',coffees.findUserCoffee);
+app.get('/my_favourites/:email',coffees.findUserFavourites);
+app.get('/my_coffees/:email',coffees.findUserCoffee);
 app.get('/coffees/:id',coffees.getSingleCoffee);
 app.post('/coffees',coffees.addCoffee);
 app.put('/coffees/:id/stars',coffees.incrementStars);

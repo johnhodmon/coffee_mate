@@ -9,7 +9,7 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
 
     function getCoffeeToEdit() {
         console.log("_id: " +$routeParams.id);
-        $http.get('/coffees/')
+        $http.get('/coffees/'+$routeParams.id)
 
             .success(function (data) {
                 console.log("data: " + data);
@@ -66,14 +66,14 @@ function setStarDisplay() {
 $scope.toggleFavourite=function()
 {
    console.log("toggle");
-    if ($scope.edit_coffee_form.favourite=="glyphicon glyphicon-star favourite-star")
+    if ($scope.edit_coffee_form.favourite=="glyphicon glyphicon-star gold-star")
     {
         $scope.edit_coffee_form.favourite="glyphicon glyphicon-star-empty";
     }
 
     else
     {
-        $scope.edit_coffee_form.favourite="glyphicon glyphicon-star favourite-star";
+        $scope.edit_coffee_form.favourite="glyphicon glyphicon-star gold-star";
     }
 }
 

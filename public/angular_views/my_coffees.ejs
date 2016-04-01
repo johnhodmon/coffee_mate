@@ -5,12 +5,9 @@
 
     <div ng-show="signedIn" ng-controller="my_coffees_view_controller as list">
         <table align="center" valign="middle">
-            <tbody ng-repeat="coffee in coffees | orderBy:'-stars'">
+            <tbody ng-repeat="coffee in coffees ">
             <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
-            <td>
-                <button ng-click="incrementStars(coffee._id)"> <span class={{coffee.favourite}}></span>
-                    {{coffee.stars}}</button>
-            </td>
+
             <td>
                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.name}}</span>
             </td>
@@ -20,6 +17,11 @@
             <td>
                 <span class="glyphicon glyphicon-euro"></span>
                 {{coffee.price}}
+            </td>
+            <td >
+                <span ng-click="editCoffee(coffee,$index+1)" ng-repeat="starStyle in getStarStyles(coffee.stars) track by $index" class="{{starStyle}}"></span>
+
+
             </td>
             <td>
 

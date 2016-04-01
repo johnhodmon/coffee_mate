@@ -59,7 +59,7 @@ router.findUserFavourites=(function(req, res)
 {
     var email=req.params.email;
 
-    Coffee.find({ 'user_email': email,'favourite':'glyphicon glyphicon-star favourite-star' },function(err, coffees)
+    Coffee.find({ 'user_email': email,'favourite':'glyphicon glyphicon-star gold-star' },function(err, coffees)
     {
         if(err)
         {
@@ -74,23 +74,21 @@ router.findUserFavourites=(function(req, res)
     });
 })
 
-router.getSingleCoffee=(function(req,res)
+router.getSingleCoffee=function(req,res)
 {
-
-
-    Coffee.findById({"_id":req.params.id},function(err, coffee){
-        if(err)
+    Coffee.find({"_id": req.params.id},function(err,coffee)
+    {
+        if (err)
         {
-            res.send(err);
+            res.json({message:'Coffee NOT found!',errmsg:err})
         }
 
         else
         {
-            console.log("getting the coffee");
             res.json(coffee);
         }
     });
-});
+};
 
 router.incrementStars = function(req, res)
 {
