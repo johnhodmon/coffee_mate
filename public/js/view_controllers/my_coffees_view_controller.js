@@ -17,18 +17,17 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
             .success(function(data)
             {
                 $scope.coffees=data;
-                console.log(data);
+
             })
             .error(function(data)
             {
                 console.log("error:"+data);
             })
 
-        $http.get('/favourites/'+$scope.profile.email) .success(function(data)
+        $http.get('/favourites') .success(function(data)
             {
                 $scope.favourites=data;
-
-
+                console.log("fav length: "+$scope.favourites.length)
 
 
             })
@@ -45,7 +44,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
             $http.delete('coffees/' + id).success(function (data) {
 
 
-                    console.log(data)
+
                     findMyCoffees();
                 })
                 .error(function (data) {
@@ -58,6 +57,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
             {
                 if($scope.favourites[i].coffee._id==id)
                 {
+                    console.log("in favs");
                     containedInFavourites=true;
                     favouriteId=$scope.favourites[i]._id
                     break;
@@ -82,9 +82,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
 
     $scope.editCoffee=function(coffee,updatedStars)
     {
-        console.log("coffee shop: "+coffee.coffee_shop);
-        console.log("coffee id: "+coffee._id);
-        console.log("updated stars: "+updatedStars);
+
 
 
         coffee.stars=updatedStars;
@@ -92,7 +90,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
 
         $http.put('/coffees/'+coffee._id,coffee)
             .success(function(data){
-                console.log(data);
+
                 $location.path('/my_coffees');
             })
             .error(function(data)
@@ -110,7 +108,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
 
     $scope.getStarStyles=function(stars) {
 
-        console.log("value" +stars);
+
         if (stars== 5) {
             return [
                 "glyphicon glyphicon-star favourite-star",
