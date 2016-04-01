@@ -1,6 +1,7 @@
 var express=require('express');
 var router=express.Router();
 var mongoose=require('mongoose');
+
 module.exports=router;
 
 var db=mongoose.connection;
@@ -10,10 +11,10 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
     replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } },
     user: 'johnhodmon@gmail.com', pass: 'baclerie48' };
 
-//var mongodbUri = "mongodb://ds011830.mlab.com:11830/heroku_q98wzmtc"
-//var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-mongoose.connect('mongodb://localhost:27017/coffee_mate');
-///mongoose.connect(mongooseUri,options);
+var mongodbUri = "mongodb://ds011830.mlab.com:11830/heroku_q98wzmtc"
+var mongooseUri = require('mongodb-uri').formatMongoose(mongodbUri);
+//mongoose.connect('mongodb://localhost:27017/coffee_mate');
+mongoose.connect(mongooseUri,options);
 db.on('error',function(err){
     console.log('connection error', err);
 });
