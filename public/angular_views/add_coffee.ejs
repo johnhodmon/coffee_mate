@@ -5,7 +5,7 @@
 
     <div ng-controller="add_coffee_view_controller">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-8 col-md-offset-2">
 
                 <form ng-show="signedIn" ng-submit="addCoffee()"
                       style="margin-top:30px;">
@@ -15,7 +15,7 @@
                                class="form-control"
                                placeholder="Coffee Name"
                                ng-model="coffee_form.name"
-                               ng-style="{'width': 100 + 'px'}" />
+                               ng-style="{'width': 120 + 'px'}" />
                     </div>
 
                     <div class="form-group" align="center">
@@ -23,7 +23,7 @@
                                class="form-control"
                                placeholder="Coffee Shop"
                                ng-model="coffee_form.coffee_shop"
-                               ng-style="{'width': 100 + 'px'}" />
+                               ng-style="{'width': 120 + 'px'}" />
                     </div>
 
                     <div class="form-group" align="center">
@@ -32,7 +32,7 @@
                                class="form-control"
                                placeholder="Price"
                                ng-model="coffee_form.price"
-                               ng-style="{'width': 100 + 'px'}" />
+                               ng-style="{'width': 120 + 'px'}" />
                     </div>
                     <button type="submit" class="btn btn-primary">Add Coffee</button>
                 </form>

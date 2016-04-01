@@ -26,11 +26,11 @@
             </td>
             <td>
                 <span class="glyphicon glyphicon-euro"></span>
-                {{coffee.price}}
+                {{coffee.price.toFixed(2)}}
             </td>
 
             <td >
-                <span ng-repeat="starStyle in getStarStyles(coffee.stars) track by $index" class="{{starStyle}}"></span>
+                <span style="margin-left: 10px;" ng-repeat="starStyle in getStarStyles(coffee.stars) track by $index" class="{{starStyle}}"></span>
 
 
             </td>

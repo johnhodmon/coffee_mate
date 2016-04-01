@@ -19,7 +19,7 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
 
                 $scope.edit_coffee_form.name=coffee.name;
                 $scope.edit_coffee_form.coffee_shop=coffee.coffee_shop;
-                $scope.edit_coffee_form.price=coffee.price;
+                $scope.edit_coffee_form.price=coffee.price.toFixed(2);
                 $scope.edit_coffee_form.stars=coffee.stars;
                 $scope.edit_coffee_form.favourite=coffee.favourite;
                 setStarDisplay();
@@ -35,31 +35,31 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
 
 function setStarDisplay() {
     if ($scope.edit_coffee_form.stars == 5) {
-        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = $scope.star5_style = "glyphicon glyphicon-star favourite-star"
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = $scope.star5_style = "glyphicon glyphicon-star favourite-star big-star"
     }
 
     else if ($scope.edit_coffee_form.stars == 4) {
-        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = "glyphicon glyphicon-star favourite-star"
-        $scope.star5_style = "glyphicon glyphicon-star-empty"
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = "glyphicon glyphicon-star favourite-star big-star"
+        $scope.star5_style = "glyphicon glyphicon-star-empty big-star"
     }
 
     else if ($scope.edit_coffee_form.stars == 3) {
-        $scope.star1_style = $scope.star2_style = $scope.star3_style = "glyphicon glyphicon-star favourite-star";
-        $scope.star5_style = $scope.star4_style = "glyphicon glyphicon-star-empty"
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = "glyphicon glyphicon-star favourite-star big-star";
+        $scope.star5_style = $scope.star4_style = "glyphicon glyphicon-star-empty big-star"
     }
 
     else if ($scope.edit_coffee_form.stars == 2) {
-        $scope.star1_style = $scope.star2_style = "glyphicon glyphicon-star favourite-star";
-        $scope.star5_style = $scope.star4_style = $scope.star3_style = "glyphicon glyphicon-star-empty"
+        $scope.star1_style = $scope.star2_style = "glyphicon glyphicon-star favourite-star big-star";
+        $scope.star5_style = $scope.star4_style = $scope.star3_style = "glyphicon glyphicon-star-empty big-star"
     }
 
     else if ($scope.edit_coffee_form.stars == 1) {
-        $scope.star1_style = "glyphicon glyphicon-star favourite-star";
-        $scope.star5_style = $scope.star4_style = $scope.star3_style = $scope.star2_style = "glyphicon glyphicon-star-empty"
+        $scope.star1_style = "glyphicon glyphicon-star favourite-star big-star";
+        $scope.star5_style = $scope.star4_style = $scope.star3_style = $scope.star2_style = "glyphicon glyphicon-star-empty big-star"
     }
 
     else {
-        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = $scope.star5_style = "glyphicon glyphicon-star-empty"
+        $scope.star1_style = $scope.star2_style = $scope.star3_style = $scope.star4_style = $scope.star5_style = "glyphicon glyphicon-star-empty big-star"
     }
 }
 
@@ -93,7 +93,7 @@ $scope.setStars=function(numberOfStars)
         {
             'name': $scope.edit_coffee_form.name,
             'coffee_shop': $scope.edit_coffee_form.coffee_shop,
-            'price': $scope.edit_coffee_form.price,
+            'price': parseFloat( $scope.edit_coffee_form.price).toFixed(2),
             'stars': $scope.edit_coffee_form.stars,
             'favourite': $scope.edit_coffee_form.favourite
 

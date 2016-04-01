@@ -24,19 +24,26 @@
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#/"><i class="fa fa-pied-piper-alt fa-lg" style="color: white;"></i> Coffee Mate App</a>
+      <a class="navbar-brand" href="#/"><i class="fa fa-coffee" style="color: white;"></i> Coffee Mate App</a>
     </div>
 
     <ul class="nav navbar-nav ">
 
       <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
-      <li><a href="#coffees/new"><i class="fa fa-money"></i> Add a Coffee</a></li>
+      <li><a href="#coffees/new"><i class="fa fa-plus-circle"></i> Add a Coffee</a></li>
       <li><a href="#coffees"><i class="fa fa-list"></i> View All Coffees</a></li>
       <li ng-show="signedIn"><a href="#my_coffees"><i class="fa fa-list"></i> My Coffees</a></li>
       <li ng-show="signedIn"><a href="#my_favourites"><i class="fa fa-list"></i>My Favourites</a></li>
     </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li ><button ng-show="!signedIn" ng-click="signIn()" type="button" class="btn btn-default navbar-btn btn-primary">Sign In</button></li>
+        <li class="nav-user" ng-show="signedIn"></p><img class="img-circle img_nav img-responsive" src="{{profile.imageUrl}}"/>{{profile.name}} </li>
+        <li ><div class="navbar-btn" ng-click="signIn()"  ng-show="!signedIn" id="gSignInWrapper">
+
+            <div id="customBtn" class="customGPlusSignIn">
+              <span class="icon"></span>
+              <span class="buttonText">Sign In</span>
+            </div>
+          </div></li>
        <li  ><button ng-show="signedIn"  ng-click="signOut()" type="button" class="btn btn-default navbar-btn btn-danger">Sign Out</button></li>
 
       </ul>
