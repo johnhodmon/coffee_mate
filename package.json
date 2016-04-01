@@ -15,5 +15,10 @@
     "serve-favicon": "~2.3.0",
     "mongodb-uri":"~0.9.7"
 
+  },
+
+  "engines": {
+    "node": "0.8.4",
+    "npm": "1.1.41"
   }
 }
