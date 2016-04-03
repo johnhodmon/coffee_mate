@@ -115,6 +115,9 @@ span.buttonText {
   font-family: 'Roboto', sans-serif;
 }
 
-
+#map
+{
+  height:100%;
+}
 
 

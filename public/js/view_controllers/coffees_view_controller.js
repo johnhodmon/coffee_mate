@@ -1,4 +1,40 @@
-var app = angular.module('CoffeeMate');
+var app = angular.module('CoffeeMate')
+    app.directive('coffeeMap', function() {
+
+
+
+        return {
+
+
+            template: '<div></div>',
+            link:function initMap() {
+                var icon="img/icon_30932_light_blue.png";
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(52.220624,-6.9413368),
+                    title:"Hello World!",
+                    description:"more coffee",
+
+                    icon:icon
+                });
+            var map =  new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 52.2475523, lng: -7.1481351},
+                zoom: 12
+            });
+                var infowindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent('<div><strong>More Details</strong><br>')
+                    infowindow.open(map, this);
+                });
+
+            marker.setMap(map);
+        }
+
+        };
+
+
+    });
+
+
 
 app.controller('coffees_view_controller', ['$scope', '$http','$location', function($scope,$http,$location) {
     // create a message to display in our view
@@ -15,6 +51,8 @@ app.controller('coffees_view_controller', ['$scope', '$http','$location', functi
     });
 
     findAll();
+
+
 
     $scope.editCoffee = function (coffee) {
 
