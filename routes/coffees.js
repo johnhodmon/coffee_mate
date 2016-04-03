@@ -125,6 +125,7 @@ router.updateCoffee=(function(req,res)
             coffee.price=req.body.price;
             coffee.stars=req.body.stars;
             coffee.favourite=req.body.favourite;
+            coffee.lat_lng=req.body.lat_lng;
             coffee.save(function(err){
                 if(err)
                 {
@@ -151,6 +152,8 @@ router.addCoffee=(function(req,res)
     coffee.user_name=req.body.user_name;
     coffee.user_email=req.body.user_email;
     coffee.user_img_url=req.body.user_img_url;
+    coffee.street=req.body.street
+    coffee.town=req.body.town
 
 
     coffee.save(function(err)

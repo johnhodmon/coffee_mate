@@ -5,28 +5,70 @@ var app = angular.module('CoffeeMate')
 
         return {
 
-
+            scope:{coffees:"@"},
             template: '<div></div>',
-            link:function initMap() {
-                var icon="img/icon_30932_light_blue.png";
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(52.220624,-6.9413368),
-                    title:"Hello World!",
-                    description:"more coffee",
+           link:function ($scope, $elem, $attr)  {
 
-                    icon:icon
-                });
-            var map =  new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 52.2475523, lng: -7.1481351},
-                zoom: 12
-            });
-                var infowindow = new google.maps.InfoWindow();
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.setContent('<div><strong>More Details</strong><br>')
-                    infowindow.open(map, this);
-                });
 
-            marker.setMap(map);
+               $attr.$observe('coffees', function(values) {
+
+
+                   var map =  new google.maps.Map(document.getElementById('map'), {
+                       center: {lat: 52.2475523, lng: -7.1481351},
+                       zoom: 12
+                   });
+                   var infowindow = new google.maps.InfoWindow();
+
+                   var coffees=JSON.parse(values);
+                   console.log(coffees);
+                   var icon = "img/icon_30932_light_blue.png";
+                   var position="";
+                   for(var i=0;i<coffees.length;i++) {
+
+                       var thisCoffee=coffees[i];
+
+                       codeAddress(thisCoffee);
+                       function codeAddress(thisCoffee) {
+                           var geocoder = new google.maps.Geocoder();
+                           var address=thisCoffee.street+","+thisCoffee.town;
+                           geocoder.geocode( { 'address': address}, function(results, status) {
+                               if (status == google.maps.GeocoderStatus.OK) {
+                                   console.log("geolocated at" + results[0].geometry.location);
+                                   position=results[0].geometry.location;
+
+                                   var marker = new google.maps.Marker({
+                                       position: position,
+                                       title:thisCoffee.coffee_shop,
+                                       icon: icon
+                                   });
+
+                                   google.maps.event.addListener(marker, 'click', function() {
+                                       infowindow.setContent('<div><strong>'+thisCoffee.name+'</strong><br>' +
+                                           thisCoffee.coffee_shop+'<br>'
+                                       +thisCoffee.stars+' stars')
+                                       infowindow.open(map, this);
+                                   });
+                                   marker.setMap(map);
+                               }
+
+                               else
+                               {
+                                   alert("gailed to geolocate");
+                               }
+                           });
+                       }
+
+
+
+                    }
+
+
+               });
+
+
+
+
+
         }
 
         };
@@ -40,6 +82,7 @@ app.controller('coffees_view_controller', ['$scope', '$http','$location', functi
     // create a message to display in our view
 
     $scope.favourites = [];
+    $scope.test="test";
 
     $scope.$watch(function() {
         return $scope.signedIn;;

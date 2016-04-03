@@ -15,6 +15,8 @@ app.controller('add_coffee_view_controller', ['$scope', '$location','$http', fun
             'name': $scope.coffee_form.name,
             'coffee_shop': $scope.coffee_form.coffee_shop,
             'price': parseFloat($scope.coffee_form.price).toFixed(2),
+             'street':$scope.coffee_form.street,
+            'town':$scope.coffee_form.town,
             'user_email':$scope.profile.email,
             'user_name':$scope.profile.name,
             'user_img_url':$scope.profile.imageUrl

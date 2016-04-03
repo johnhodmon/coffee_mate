@@ -10,7 +10,9 @@ var CoffeeSchema=new mongoose.Schema({
     stars:{type:Number, default:0},
     user_email:String,
     user_name:String,
-    user_img_url:String
+    user_img_url:String,
+    street:String,
+    town:String
 });
 
 module.exports=mongoose.model('Coffee',CoffeeSchema);
