@@ -9,12 +9,14 @@ var Coffee=require('../model/coffees');
 
 var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
     replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } },
-    user: 'johnhodmon@gmail.com', pass: 'baclerie48' };
+    user: 'johnhodmon@gmail.com', pass: 'rgnb889161e' };
 
-var mongodbUri = "mongodb://ds011830.mlab.com:11830/heroku_q98wzmtc"
+
+
+var mongodbUri = "mongodb://ds015730.mlab.com:15730/heroku_1lqp0sk0"
 var mongooseUri = require('mongodb-uri').formatMongoose(mongodbUri);
-mongoose.connect('mongodb://localhost:27017/coffee_mate');
-//mongoose.connect(mongooseUri,options);
+//mongoose.connect('mongodb://localhost:27017/coffee_mate');
+mongoose.connect(mongooseUri,options);
 db.on('error',function(err){
     console.log('connection error', err);
 });
