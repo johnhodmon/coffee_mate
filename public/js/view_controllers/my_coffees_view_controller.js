@@ -7,7 +7,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
 
 
     findMyCoffees();
-    $scope.favourites=[];
+    $scope.allFavourites=[];
 
 
 
@@ -26,7 +26,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
 
         $http.get('/favourites') .success(function(data)
             {
-                $scope.favourites=data;
+                $scope.allFavourites=data;
                 console.log("fav length: "+$scope.favourites.length)
 
 
@@ -53,13 +53,13 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
 
             var containedInFavourites=false;
             var favouriteId=null;
-            for(var i=0;i<$scope.favourites.length;i++)
+            for(var i=0;i<$scope.allFavourites.length;i++)
             {
-                if($scope.favourites[i].coffee._id==id)
+                if($scope.allFavourites[i].coffee._id==id)
                 {
                     console.log("in favs");
                     containedInFavourites=true;
-                    favouriteId=$scope.favourites[i]._id
+                    favouriteId=$scope.allFavourites[i]._id
                     break;
                 }
             }
