@@ -34,7 +34,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
         $http.get('/favourites') .success(function(data)
             {
                 $scope.allFavourites=data;
-                console.log("fav length: "+$scope.favourites.length)
+
 
 
             })
@@ -74,6 +74,7 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
             if (containedInFavourites)
 
             {
+                console.log("deleting favourite"+favouriteId);
                 $http.delete('favourites/' + favouriteId).success(function (data) {
 
 
