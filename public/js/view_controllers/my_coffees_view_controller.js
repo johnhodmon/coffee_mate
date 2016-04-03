@@ -4,7 +4,14 @@ app.controller('my_coffees_view_controller', ['$scope', '$http','$location', fun
     // create a message to display in our view
 
 
-
+    $scope.$watch(function() {
+        return $scope.signedIn;;
+    }, function(newValue, oldValue) {
+        if(newValue==true)
+        {
+            findMyCoffees();
+        }
+    });
 
     findMyCoffees();
     $scope.allFavourites=[];

@@ -22,6 +22,8 @@ app.controller('edit_coffee_view_controller', ['$scope', '$location','$http','$r
                 $scope.edit_coffee_form.price=coffee.price.toFixed(2);
                 $scope.edit_coffee_form.stars=coffee.stars;
                 $scope.edit_coffee_form.favourite=coffee.favourite;
+                $scope.edit_coffee_form.street=coffee.street;
+                $scope.edit_coffee_form.town=coffee.town;
                 setStarDisplay();
 
 
@@ -95,7 +97,10 @@ $scope.setStars=function(numberOfStars)
             'coffee_shop': $scope.edit_coffee_form.coffee_shop,
             'price': parseFloat( $scope.edit_coffee_form.price).toFixed(2),
             'stars': $scope.edit_coffee_form.stars,
-            'favourite': $scope.edit_coffee_form.favourite
+            'favourite': $scope.edit_coffee_form.favourite,
+            'street':$scope.edit_coffee_form.street,
+            'town':$scope.edit_coffee_form.town
+
 
 
         };

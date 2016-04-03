@@ -12,15 +12,16 @@ var app = angular.module('CoffeeMate')
 
                $attr.$observe('coffees', function(values) {
 
+                   var coffees=JSON.parse(values);
+                   console.log(coffees);
 
                    var map =  new google.maps.Map(document.getElementById('map'), {
-                       center: {lat: 52.2475523, lng: -7.1481351},
+                       center: {lat:   52.2397538, lng:-6.931847},
                        zoom: 12
                    });
                    var infowindow = new google.maps.InfoWindow();
 
-                   var coffees=JSON.parse(values);
-                   console.log(coffees);
+
                    var icon = "img/icon_30932_light_blue.png";
                    var position="";
                    for(var i=0;i<coffees.length;i++) {
